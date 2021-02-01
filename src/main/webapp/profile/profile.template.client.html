@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Course Manager</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css">
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+	  <link rel="stylesheet" href="profile.style.client.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+     
+   </head>
+   <body>
+      <div class="container profile-client">
+         <div class="row justify-content-center">
+            <form id="profile-form" class="col-md-10 col-lg-8 profile-form" >
+			   <div class="row">
+					<div class="col-md-12">
+						<h1>Profile</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+					 <div class="alert alert-success " id="myalert">
+                      <a href="#" class="close alert-close" id="alert-close" >&times;</a>
+					  Profile successfully saved
+					  </div>
+					</div>
+			   </div>
+               <div class="row form-group">
+                  <div class="col-md-12">
+                     <label for="username">Username</label>
+                  </div>
+                  <div class="col-md-12">
+                     <input type="text" class="form-control txt-username" id="username" placeholder="Alice" readonly>
+                  </div>
+               </div>
+               <div class="row form-group">
+                  <div class="col-md-12">
+                     <label for="phone">Phone</label>
+                  </div>
+                  <div class="col-md-12">
+                     <input type="tel" class="form-control txt-phone" id="phone" placeholder="(555) 123-4324">
+                  </div>
+               </div>
+               <div class="row form-group">
+                  <div class="col-md-12">
+                     <label for="email">Email</label>
+                  </div>
+                  <div class="col-md-12">
+                     <input type="email" class="form-control txt-email" id="email" placeholder="alice@wonderland.com">
+                  </div>
+               </div>
+               <div class="row form-group">
+                  <div class="col-md-12">
+                     <label for="role">Role</label>
+                  </div>
+              <div class="col-md-12">
+                     <select class="form-control custom-select txt-role" id="role">
+                        <option>Faculty</option>
+                        <option>Student</option>
+                        <option>Admin</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="row form-group">
+                  <div class="col-md-12">
+                     <label for="date-of-birth">Date of Birth</label>
+                  </div>
+                  <div class="col-md-12">
+                     <input id="date-of-birth" class="form-control txt-dob" placeholder="mm/dd/yy">
+                  </div>
+               </div>
+               <div class="row form-group">
+                  <div class="col-md-12">
+                     <button onclick="$('alert').show()" type="button" class="form-control btn btn-success btn-update " id="btn-success">Update</button>
+                  </div>
+               </div>
+               <div class="row form-group">
+                 <div class="col-md-12">
+                     <a href="../home/home.template.client.html" class="form-control btn btn-danger btn-logout">Logout</a>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+       <script>
+         $('#date-of-birth').datepicker({
+             uiLibrary: 'bootstrap4'
+         });
+		 $("#btn-success").click(function(){
+		 $("#myalert").attr('style','display:block !important;');
+		 });
+		 $("#alert-close").click(function(){
+		 $("#myalert").attr('style','display:none !important;');
+		 });
+		 
+      </script>
+   </body>
+</html>
