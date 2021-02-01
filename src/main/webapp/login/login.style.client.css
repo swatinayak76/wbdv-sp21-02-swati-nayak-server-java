@@ -1,0 +1,39 @@
+body{
+	background:#F1F2F4;
+	font-family: 'Montserrat', sans-serif;
+}
+.login-client{
+padding-top:40px;
+padding-bottom:40px;
+}
+.login-client .login-form{
+	background: #ffff;
+    padding:20px 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 1px;
+}
+.login-client .login-form .form-cancel-btn{
+	position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 24px;
+    display: block;
+}
+.login-client h1{
+	margin-bottom:20px;
+	text-align:center;
+}
+@media (max-width:576px){
+	body{
+		background:#ffffff;
+	}
+	.login-client{
+		padding-top:0px;
+		padding-bottom:0px;
+	}
+	.login-client .login-form{
+		border-radius:0px;
+		box-shadow:none;
+	}
+}
+
