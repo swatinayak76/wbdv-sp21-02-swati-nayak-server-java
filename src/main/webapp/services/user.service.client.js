@@ -3,7 +3,7 @@ function AdminUserServiceClient() {
 	this.findAllUsers = findAllUsers;
 	this.deleteUser = deleteUser;
 	this.updateUser = updateUser;
-	this.url = 'https://wbdv-sp21-2-swati-nayak-server.herokuapp.com/api/001040845/users';
+	this.url = 'https://wbdv-generic-server.herokuapp.com/api/001040845/users';
 	var self = this;
 	function createUser(user) {
 		return fetch(self.url, {
