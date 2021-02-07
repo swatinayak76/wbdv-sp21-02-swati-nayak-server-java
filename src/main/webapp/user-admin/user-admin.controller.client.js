@@ -161,9 +161,9 @@
 		      users = actualUsersFromServer
 		      renderUsers(users);
 		      $(document).ready(function(){
-//			        $('#adminTable').dataTable({
-//			            "bSort": false
-//			        } );
+			        $('#adminTable').dataTable({
+			            "bSort": false
+			        } );
 			    });
 		    })
 		    
