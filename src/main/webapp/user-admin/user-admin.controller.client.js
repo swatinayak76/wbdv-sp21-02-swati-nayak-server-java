@@ -95,9 +95,13 @@
 		}
 		
 		if(($firstNameFld.val() == null || $firstNameFld.val() == "") ){
-			msg += "Fisrt Name, "
+			msg += "First Name, "
 		}
-		
+
+		if(($firstNameFld.val() == null || $lastNameFld.val() == "") ){
+			msg += "Last Name, "
+		}
+
 		console.log(msg);
 		if(msg != ""){
 			msg = msg.replace(/,\s*$/, "");
