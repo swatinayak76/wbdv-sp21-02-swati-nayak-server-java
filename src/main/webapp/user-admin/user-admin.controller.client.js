@@ -136,6 +136,15 @@
 		    .click(selectUser)
 		}
 
+	function findUserById() {
+		var id = '601d0766f9239a0017f2d53b';
+		userService.findUserById(id)
+			.then(function (actualUsersFromServer) {
+				user = actualUsersFromServer
+				console.log(user);
+			})
+	}
+
 	function main() {
 		  $usernameFld = $("#usernameFld")
 		  $passwordFld = $("#passwordFld")
