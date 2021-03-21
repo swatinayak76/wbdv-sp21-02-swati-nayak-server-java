@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.wbdvsp2102swatinayakserverjava.models.Widget;
 import com.example.wbdvsp2102swatinayakserverjava.services.WidgetService;
+import com.example.wbdvsp2102swatinayakserverjava.util.WidgetNotFoundException;
 
 @RestController
 @RequestMapping("/api")
@@ -36,12 +37,13 @@ public class WidgetController {
 	}
 
 	@PutMapping("/widgets/{wid}")
-	public int updateWidget(@PathVariable("wid") String wid,@Valid  @RequestBody Widget widget) {
+	public int updateWidget(@PathVariable("wid") String wid, @Valid @RequestBody Widget widget)
+			throws WidgetNotFoundException {
 		return service.updateWidget(wid, widget);
 	}
 
 	@DeleteMapping("/widgets/{wid}")
-	public int deleteWidget(@PathVariable("wid") String wid) {
+	public int deleteWidget(@PathVariable("wid") String wid) throws WidgetNotFoundException {
 		return service.deleteWidget(wid);
 	}
 
@@ -51,7 +53,7 @@ public class WidgetController {
 	}
 
 	@GetMapping("/widgets/{wid}")
-	public Widget findWidgetById(@PathVariable("wid") String wid) {
+	public Widget findWidgetById(@PathVariable("wid") String wid) throws WidgetNotFoundException {
 		return service.findWidgetById(wid);
 	}
 

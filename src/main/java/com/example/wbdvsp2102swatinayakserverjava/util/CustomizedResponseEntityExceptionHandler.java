@@ -11,6 +11,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -45,6 +46,15 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
 	private ResponseEntity<Object> buildResponseEntity(ApiError apiError) {
 		return new ResponseEntity<>(apiError, apiError.getStatus());
+	}
+
+	@ExceptionHandler(value = { WidgetNotFoundException.class })
+	public ResponseEntity<Object> resourceNotFoundException(WidgetNotFoundException ex, WebRequest request) {
+		List<String> errors = new ArrayList<String>();
+
+		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), errors);
+		return handleExceptionInternal(ex, apiError, null, apiError.getStatus(), request);
+
 	}
 
 }
