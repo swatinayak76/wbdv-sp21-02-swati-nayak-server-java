@@ -13,13 +13,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.example.wbdvsp2102swatinayakserverjava.models.Widget;
 import com.example.wbdvsp2102swatinayakserverjava.services.WidgetService;
 import com.example.wbdvsp2102swatinayakserverjava.util.WidgetNotFoundException;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api")
+
 public class WidgetController {
 
 	@Autowired
