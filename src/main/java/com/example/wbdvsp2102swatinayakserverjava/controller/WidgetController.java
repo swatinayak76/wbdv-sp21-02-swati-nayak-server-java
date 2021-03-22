@@ -17,12 +17,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.example.wbdvsp2102swatinayakserverjava.models.Widget;
 import com.example.wbdvsp2102swatinayakserverjava.services.WidgetService;
-import com.example.wbdvsp2102swatinayakserverjava.util.WidgetNotFoundException;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api")
-
 public class WidgetController {
 
 	@Autowired
@@ -30,7 +28,6 @@ public class WidgetController {
 
 	@PostMapping("/topics/{tid}/widgets")
 	public Widget createWidget(@PathVariable("tid") String tid, @Valid @RequestBody Widget widget) {
-		System.out.println(widget.toString());
 		return service.createWidget(tid, widget);
 	}
 
@@ -40,13 +37,12 @@ public class WidgetController {
 	}
 
 	@PutMapping("/widgets/{wid}")
-	public int updateWidget(@PathVariable("wid") String wid, @Valid @RequestBody Widget widget)
-			throws WidgetNotFoundException {
+	public int updateWidget(@PathVariable("wid") String wid, @Valid @RequestBody Widget widget) {
 		return service.updateWidget(wid, widget);
 	}
 
 	@DeleteMapping("/widgets/{wid}")
-	public int deleteWidget(@PathVariable("wid") String wid) throws WidgetNotFoundException {
+	public int deleteWidget(@PathVariable("wid") String wid) {
 		return service.deleteWidget(wid);
 	}
 
@@ -56,7 +52,7 @@ public class WidgetController {
 	}
 
 	@GetMapping("/widgets/{wid}")
-	public Widget findWidgetById(@PathVariable("wid") String wid) throws WidgetNotFoundException {
+	public Widget findWidgetById(@PathVariable("wid") String wid) {
 		return service.findWidgetById(wid);
 	}
 
