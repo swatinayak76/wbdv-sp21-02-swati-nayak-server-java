@@ -13,7 +13,7 @@ import com.example.wbdvsp2102swatinayakserverjava.models.Widget;
 public class WidgetService {
 
 	private static List<Widget> widgetList = new ArrayList<Widget>();
-
+	//set WID
 	String getUniqueId() {
 		UUID uuid = UUID.randomUUID();
 		return uuid.toString();
