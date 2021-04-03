@@ -1,34 +1,77 @@
 package com.example.wbdvsp2102swatinayakserverjava.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+@Entity
 public class Widget {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	@Column
+	@NotBlank(message = "TopicId is mandatory")
+	private String topicId;
 
 	@NotBlank(message = "Name is mandatory")
 	@Size(min = 2, message = "Name should have atleast 2 characters")
+	@Column
 	private String name;
-	private String id;
 
 	@NotBlank(message = "Type is mandatory")
+	@Column
 	private String type;
 
+	@Column(name = "widgetorder")
 	private int widgetOrder;
 
-	@NotBlank(message = "Type is mandatory")
+	@NotBlank(message = "Text is mandatory")
+	@Column
 	private String text;
 
 	@Size(min = 5, message = "src should have atleast 2 characters")
 	@NotBlank(message = "src is mandatory")
 	private String src;
 
+	@Column
 	private int size;
+
+	@Column
 	private int width;
+
+	@Column
 	private int height;
+
+	@Column
 	private String cssClass;
+
+	@Column
 	private String style;
+
+	@Column
 	private String value;
-	private String topicId;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTopicId() {
+		return topicId;
+	}
+
+	public void setTopicId(String topicId) {
+		this.topicId = topicId;
+	}
 
 	public String getName() {
 		return name;
@@ -36,14 +79,6 @@ public class Widget {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getType() {
@@ -124,14 +159,6 @@ public class Widget {
 
 	public void setValue(String value) {
 		this.value = value;
-	}
-
-	public String getTopicId() {
-		return topicId;
-	}
-
-	public void setTopicId(String topicId) {
-		this.topicId = topicId;
 	}
 
 	@Override

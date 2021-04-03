@@ -1,66 +1,56 @@
 package com.example.wbdvsp2102swatinayakserverjava.services;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.wbdvsp2102swatinayakserverjava.models.Widget;
+import com.example.wbdvsp2102swatinayakserverjava.repositories.WidgetRepository;
 
 @Service
 public class WidgetService {
 
-	private static List<Widget> widgetList = new ArrayList<Widget>();
-	//set WID
-	String getUniqueId() {
-		UUID uuid = UUID.randomUUID();
-		return uuid.toString();
-	}
+	@Autowired
+	WidgetRepository repository;
 
 	public Widget createWidget(String tid, Widget widget) {
-		String id = getUniqueId();
-		widget.setId(id);
 		widget.setTopicId(tid);
-		widgetList.add(widget);
-		return widget;
+		return repository.save(widget);
 	}
 
 	public List<Widget> findWidgetsForTopic(String tid) {
-		return widgetList.stream().filter(w -> tid.equalsIgnoreCase(w.getTopicId())).collect(Collectors.toList());
+		return repository.findWidgetsByTopicId(tid);
 	}
 
-	public int updateWidget(String wid, Widget newWidget) {
-		for (int i = 0; i < widgetList.size(); i++) {
-			if (widgetList.get(i).getId().equalsIgnoreCase(wid)) {
-				Widget oldWidget = widgetList.get(i);
-				newWidget.setId(oldWidget.getId());
-				newWidget.setTopicId(oldWidget.getTopicId());
-				widgetList.set(i, newWidget);
+	public int updateWidget(Long wid, Widget newWidget) {
+		try {
+			newWidget.setId(wid);
+			if (repository.existsById(wid)) {
+				repository.save(newWidget);
 				return 1;
 			}
+			return 0;
+		} catch (Exception ex) {
+			return 0;
 		}
 
-		return 0;
 	}
 
-	public int deleteWidget(String wid) {
-		for (int i = 0; i < widgetList.size(); i++) {
-			if (widgetList.get(i).getId().equalsIgnoreCase(wid)) {
-				widgetList.remove(i);
-				return 1;
-			}
+	public int deleteWidget(Long wid) {
+		try {
+			repository.deleteById(wid);
+			return 1;
+		} catch (Exception ex) {
+			return 0;
 		}
-
-		return 0;
 	}
 
 	public List<Widget> findAllWidgets() {
-		return widgetList;
+		return repository.findAll();
 	}
 
-	public Widget findWidgetById(String wid) {
-		return widgetList.stream().filter(w -> w.getId().equalsIgnoreCase(wid)).findAny().orElse(null);
+	public Widget findWidgetById(Long wid) {
+		return repository.findById(wid).orElse(null);
 	}
 }
